@@ -66,7 +66,6 @@ func ParseTranscribeMe(bytes []byte) (*Transcript, error) {
 			durStr := fmt.Sprintf("%vh%vm%vs", m[3], m[4], m[5])
 			dur, err := time.ParseDuration(durStr)
 			if err != nil {
-				panic("Y")
 				return nil, err
 			}
 			p.TurnOnset = dur
@@ -79,7 +78,6 @@ func ParseTranscribeMe(bytes []byte) (*Transcript, error) {
 			durStr := fmt.Sprintf("%vh%vm%vs", m2[2], m2[3], m2[4])
 			dur, err := time.ParseDuration(durStr)
 			if err != nil {
-				panic("Z")
 				return nil, err
 			}
 			txn.TotalDuration = dur
