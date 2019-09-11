@@ -1,0 +1,17 @@
+language: go
+go_import_path: github.com/grokify/go-diarization
+go:
+  - "1.12.x"
+  - "1.11.x"
+  - "1.10.x"
+  - "1.9.x"
+  - "1.8.x"
+  - master
+matrix:
+  allow_failures:
+    - go: "1.8.x"
+    - go: master
+install:
+  - go get -t -v ./...
+script:
+  - go test -v ./...
