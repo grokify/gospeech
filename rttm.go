@@ -17,14 +17,17 @@ const (
 	nsInSec            = 1000000000
 )
 
+// RTTM represents a Rich Transcription Time Marked (RTTM) file.
 type RTTM struct {
 	Turns []RTTMTurn `json:"turns"`
 }
 
+// NewRTTM creates a new RTTM struct.
 func NewRTTM() RTTM {
 	return RTTM{Turns: []RTTMTurn{}}
 }
 
+// WriteFile writes the contents in a RTTM file.
 func (rttm *RTTM) WriteFile(filename string, perm os.FileMode) error {
 	f, err := os.Create(filename)
 	if err != nil {
@@ -63,11 +66,11 @@ func (rttm *RTTMTurn) trimVars() {
 
 // Encode returns a RTTM turn string.
 func (rttm *RTTMTurn) Encode() string {
-	return strings.Join(rttm.EncodeSlice(), " ")
+	return strings.Join(rttm.encodeSlice(), " ")
 }
 
 // EncodeSlice returns RTTM encoded turn as a slice
-func (rttm *RTTMTurn) EncodeSlice() []string {
+func (rttm *RTTMTurn) encodeSlice() []string {
 	rttm.trimVars()
 	parts := []string{}
 	// var1 = Type

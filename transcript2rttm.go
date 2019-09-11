@@ -4,7 +4,7 @@ import (
 	"github.com/grokify/gotilla/time/timeutil"
 )
 
-// TranscriptToRttm converts a transcript struct to a RTTM
+// TranscriptToRTTM converts a transcript struct to a RTTM
 // struct.
 func TranscriptToRTTM(txn *Transcript) RTTM {
 	rttm := NewRTTM()
