@@ -57,26 +57,22 @@ func ParseTranscribeMe(bytes []byte) (*Transcript, error) {
 		if len(line) == 0 {
 			continue
 		}
-		m := rxTurn.FindStringSubmatch(line)
-		if len(m) > 0 {
+		if m := rxTurn.FindStringSubmatch(line); len(m) > 0 {
 			p := Turn{
 				SpeakerName:  strings.TrimSpace(m[1]),
 				TurnOnsetRaw: strings.TrimSpace(m[2]),
 				Text:         strings.TrimSpace(m[6])}
-			durStr := fmt.Sprintf("%vh%vm%vs", m[3], m[4], m[5])
-			dur, err := time.ParseDuration(durStr)
+			dur, err := time.ParseDuration(
+				fmt.Sprintf("%sh%sm%ss", m[3], m[4], m[5]))
 			if err != nil {
 				return nil, err
 			}
 			p.TurnOnset = dur
 			txn.Turns = append(txn.Turns, p)
 			speakersMap[p.SpeakerName] = 1
-			continue
-		}
-		m2 := rxEnd.FindStringSubmatch(line)
-		if len(m2) > 0 {
-			durStr := fmt.Sprintf("%vh%vm%vs", m2[2], m2[3], m2[4])
-			dur, err := time.ParseDuration(durStr)
+		} else if m := rxEnd.FindStringSubmatch(line); len(m) > 0 {
+			dur, err := time.ParseDuration(
+				fmt.Sprintf("%sh%sm%ss", m[2], m[3], m[4]))
 			if err != nil {
 				return nil, err
 			}
