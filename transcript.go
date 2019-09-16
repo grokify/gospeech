@@ -6,9 +6,10 @@ import (
 	"io/ioutil"
 	"os"
 	"regexp"
-	"sort"
 	"strings"
 	"time"
+
+	"github.com/grokify/gotilla/time/timeutil"
 )
 
 // S2: 00:01:20.626 Sure.
@@ -24,16 +25,23 @@ var rxEnd *regexp.Regexp = regexp.MustCompile(rxEndFormat)
 // Transcript represents a text representation of a conversation.
 type Transcript struct {
 	Turns         []Turn        `json:"turns"`
-	SpeakerNames  []string      `json:"speakerNames"`
+	Speakers      SpeakerSet    `json:"speakers"`
 	TotalDuration time.Duration `json:"totalDuration"`
 }
 
 // Turn represent what has been spoken.
 type Turn struct {
-	TurnOnset    time.Duration `json:"turnOnset"`
-	TurnOnsetRaw string        `json:"turnOnsetRaw"`
+	TimeBegin    time.Duration `json:"turnOnset"`
+	TimeBeginRaw string        `json:"turnOnsetRaw"`
+	TimeEnd      time.Duration `json:"turnEnd"`
+	TimeEndRaw   string        `json:"turnEndRaw"`
 	SpeakerName  string        `json:"speakerName"`
 	Text         string        `json:"text"`
+}
+
+// Duration returns the duration.
+func (turn *Turn) Duration() time.Duration {
+	return timeutil.SubDuration(turn.TimeEnd, turn.TimeBegin)
 }
 
 // ParseTranscribeMeFile reads a TranscribeMe.com text file.
@@ -48,8 +56,8 @@ func ParseTranscribeMeFile(filename string) (*Transcript, error) {
 // ParseTranscribeMe reads TranscribeMe.com text file data.
 func ParseTranscribeMe(bytes []byte) (*Transcript, error) {
 	txn := &Transcript{
-		Turns:        []Turn{},
-		SpeakerNames: []string{}}
+		Turns:    []Turn{},
+		Speakers: SpeakerSet{SpeakersMap: map[string]Speaker{}}}
 	speakersMap := map[string]int{}
 	lines := strings.Split(string(bytes), "\n")
 	for _, line := range lines {
@@ -60,14 +68,14 @@ func ParseTranscribeMe(bytes []byte) (*Transcript, error) {
 		if m := rxTurn.FindStringSubmatch(line); len(m) > 0 {
 			p := Turn{
 				SpeakerName:  strings.TrimSpace(m[1]),
-				TurnOnsetRaw: strings.TrimSpace(m[2]),
+				TimeBeginRaw: strings.TrimSpace(m[2]),
 				Text:         strings.TrimSpace(m[6])}
 			dur, err := time.ParseDuration(
 				fmt.Sprintf("%sh%sm%ss", m[3], m[4], m[5]))
 			if err != nil {
 				return nil, err
 			}
-			p.TurnOnset = dur
+			p.TimeBegin = dur
 			txn.Turns = append(txn.Turns, p)
 			speakersMap[p.SpeakerName] = 1
 		} else if m := rxEnd.FindStringSubmatch(line); len(m) > 0 {
@@ -78,11 +86,11 @@ func ParseTranscribeMe(bytes []byte) (*Transcript, error) {
 			}
 			txn.TotalDuration = dur
 		}
-	}
-	for s := range speakersMap {
-		txn.SpeakerNames = append(txn.SpeakerNames, s)
-	}
-	sort.Strings(txn.SpeakerNames)
+	} /*
+		for s := range speakersMap {
+			txn.SpeakerNames = append(txn.SpeakerNames, s)
+		}
+	sort.Strings(txn.SpeakerNames)*/
 	return txn, nil
 }
 
@@ -94,4 +102,26 @@ func (txn *Transcript) WriteJSON(filename string, perm os.FileMode) error {
 		return err
 	}
 	return ioutil.WriteFile(filename, data, perm)
+}
+
+type SpeakerSet struct {
+	SpeakersMap map[string]Speaker
+}
+
+func (ss *SpeakerSet) AddTurn(turn Turn) {
+	speakerName := strings.TrimSpace(turn.SpeakerName)
+	speaker, ok := ss.SpeakersMap[speakerName]
+	if !ok {
+		speaker = Speaker{}
+	}
+	speaker.Name = speakerName
+	speaker.Turns += 1
+	speaker.TotalDuration = timeutil.SumDurations(speaker.TotalDuration, turn.Duration())
+	ss.SpeakersMap[speakerName] = speaker
+}
+
+type Speaker struct {
+	Name          string
+	Turns         int32
+	TotalDuration time.Duration
 }

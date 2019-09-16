@@ -45,8 +45,8 @@ type RTTMTurn struct {
 	Type                string
 	FileID              string
 	ChannelID           int
-	TurnOnset           time.Duration
-	TurnDuration        time.Duration
+	TimeOnset           time.Duration
+	TimeDuration        time.Duration
 	OrthographyField    string
 	SpeakerType         string
 	SpeakerName         string
@@ -91,12 +91,12 @@ func (rttm *RTTMTurn) encodeSlice() []string {
 	} else {
 		parts = append(parts, strconv.Itoa(defaultChannelID))
 	}
-	// var4 = TurnOnset
+	// var4 = TimeOnset
 	parts = append(parts, fmt.Sprintf("%.3f",
-		float32(rttm.TurnOnset)/float32(nsInSec)))
-	// var5 = TurnDuration
+		float32(rttm.TimeOnset)/float32(nsInSec)))
+	// var5 = TimeDuration
 	parts = append(parts, fmt.Sprintf("%.3f",
-		float32(rttm.TurnDuration)/float32(nsInSec)))
+		float32(rttm.TimeDuration)/float32(nsInSec)))
 	// var6 = OrthographyField
 	if len(rttm.OrthographyField) > 0 {
 		parts = append(parts, rttm.OrthographyField)
