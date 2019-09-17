@@ -21,7 +21,7 @@ https://godoc.org/google.golang.org/genproto/googleapis/cloud/speech/v1#LongRunn
 func LongRunningRecognizeResponseToTranscript(res *speechpb.LongRunningRecognizeResponse) (Transcript, error) {
 	txn := NewTranscript()
 	lastRes := res.Results[len(res.Results)-1]
-	fmt.Println("NUM_ALTS[%v]\n", len(lastRes.Alternatives))
+	fmt.Printf("NUM_ALTS[%v]\n", len(lastRes.Alternatives))
 	if len(lastRes.Alternatives) != 1 {
 		return txn, fmt.Errorf("E_NOT_1_LAST_ALTERNATIVE [%v]", len(lastRes.Alternatives))
 	}
