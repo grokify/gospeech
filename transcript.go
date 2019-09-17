@@ -108,6 +108,7 @@ type SpeakerSet struct {
 	SpeakersMap map[string]Speaker
 }
 
+// AddTurn adds a turn to the speaker information
 func (ss *SpeakerSet) AddTurn(turn Turn) {
 	speakerName := strings.TrimSpace(turn.SpeakerName)
 	speaker, ok := ss.SpeakersMap[speakerName]
@@ -120,6 +121,7 @@ func (ss *SpeakerSet) AddTurn(turn Turn) {
 	ss.SpeakersMap[speakerName] = speaker
 }
 
+// Speaker represents a speaker including numbers of turns spoken and total duration spoken.
 type Speaker struct {
 	Name          string
 	Turns         int32

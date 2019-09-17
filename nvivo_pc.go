@@ -18,13 +18,14 @@ var rxNVivoLinePC *regexp.Regexp = regexp.MustCompile(nVivoLinePCFormat)
 // ParseNVivoPcFile parses a NVivo PC file. This file has
 // begin and end times for each turn.
 func ParseNVivoPcFile(file string) (*Transcript, error) {
-	tr := &Transcript{Turns: []Turn{}}
+	tr := &Transcript{
+		Turns:    []Turn{},
+		Speakers: SpeakerSet{SpeakersMap: map[string]Speaker{}}}
 	bytes, err := ioutil.ReadFile(file)
 	if err != nil {
 		return tr, err
 	}
 	lines := strings.Split(string(bytes), "\n")
-	speakerNamesMap := map[string]int{}
 	for _, line := range lines {
 		line = strings.TrimSpace(line)
 		if len(line) == 0 {
@@ -35,9 +36,8 @@ func ParseNVivoPcFile(file string) (*Transcript, error) {
 			return tr, err
 		}
 		tr.Turns = append(tr.Turns, turn)
-		speakerNamesMap[turn.SpeakerName] = 1
+		tr.Speakers.AddTurn(turn)
 	}
-	//speakerNames := []string{}
 
 	return tr, nil
 }
