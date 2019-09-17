@@ -25,7 +25,7 @@ func main() {
 
 	fmt.Printf("NUM_RESULTS [%v]\n", len(res.Results))
 
-	checkSpeakerTags = false
+	checkSpeakerTags := false
 	if checkSpeakerTags {
 		for i, resp := range res.Results {
 			for _, alt := range resp.Alternatives {
