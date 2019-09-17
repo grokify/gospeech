@@ -250,7 +250,18 @@
     }
   ],
   "speakers": {
-    "SpeakersMap": null
+    "SpeakersMap": {
+      "S1": {
+        "Name": "S1",
+        "Turns": 16,
+        "TotalDuration": 250194000000
+      },
+      "S2": {
+        "Name": "S2",
+        "Turns": 15,
+        "TotalDuration": 85117000000
+      }
+    }
   },
   "totalDuration": 0
 }
