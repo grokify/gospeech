@@ -29,6 +29,20 @@ type Transcript struct {
 	TotalDuration time.Duration `json:"totalDuration"`
 }
 
+func NewTranscript() Transcript {
+	return Transcript{
+		Turns:    []Turn{},
+		Speakers: SpeakerSet{SpeakersMap: map[string]Speaker{}}}
+}
+
+func (txn *Transcript) BuildSpeakers() {
+	ss := SpeakerSet{SpeakersMap: map[string]Speaker{}}
+	for _, turn := range txn.Turns {
+		ss.AddTurn(turn)
+	}
+	txn.Speakers = ss
+}
+
 // Turn represent what has been spoken.
 type Turn struct {
 	TimeBegin    time.Duration `json:"turnOnset"`
