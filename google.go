@@ -59,7 +59,7 @@ func LongRunningRecognizeResponseToTranscript(res *speechpb.LongRunningRecognize
 		}
 	}
 	txn.Turns = append(txn.Turns, curTurn)
-	txn.BuildSpeakers()
+	txn.Inflate()
 	return txn, nil
 }
 

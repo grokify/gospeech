@@ -35,12 +35,18 @@ func NewTranscript() Transcript {
 		Speakers: SpeakerSet{SpeakersMap: map[string]Speaker{}}}
 }
 
-func (txn *Transcript) BuildSpeakers() {
+func (txn *Transcript) Inflate() {
 	ss := SpeakerSet{SpeakersMap: map[string]Speaker{}}
-	for _, turn := range txn.Turns {
+	for i, turn := range txn.Turns {
+		turn.Text = strings.Join(strings.Fields(turn.Text), " ")
 		ss.AddTurn(turn)
+		txn.Turns[i] = turn
 	}
 	txn.Speakers = ss
+	if len(txn.Turns) > 0 {
+		lastTurn := txn.Turns[len(txn.Turns)-1]
+		txn.TotalDuration = lastTurn.TimeEnd
+	}
 }
 
 // Turn represent what has been spoken.
