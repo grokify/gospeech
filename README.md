@@ -11,6 +11,12 @@ Initially, it is designed to convert transcripts from TranscribeMe.com to [Rich 
 
 * https://github.com/nryant/dscore
 
+Install the following Python pre-requisites before running dscore:
+
+```
+$ pip install tabulate intervaltree numpy scipy
+```
+
 ## Usage
 
 See the following example:
