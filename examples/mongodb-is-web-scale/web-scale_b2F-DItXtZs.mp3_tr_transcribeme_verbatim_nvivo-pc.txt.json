@@ -250,6 +250,10 @@
     }
   ],
   "speakers": {
+    "ByAppearance": [
+      "S1",
+      "S2"
+    ],
     "SpeakersMap": {
       "S1": {
         "Name": "S1",

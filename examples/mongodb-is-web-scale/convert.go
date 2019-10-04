@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"io/ioutil"
 	"log"
 	"strings"
 
@@ -42,6 +43,13 @@ func main() {
 			log.Fatal(err)
 		}
 		fmt.Printf("WROTE [%v]\n", opts.Output+".json")
+
+		html := diarization.TranscriptWebpage(txn)
+		err = ioutil.WriteFile(opts.Input+".html", []byte(html), 0644)
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Printf("WROTE [%v]\n", opts.Output+".html")
 	case "transcribeme":
 		panic("use NVivo PC instead of TranscribeMe native")
 		txn, err := diarization.ParseTranscribeMeFile(opts.Input)

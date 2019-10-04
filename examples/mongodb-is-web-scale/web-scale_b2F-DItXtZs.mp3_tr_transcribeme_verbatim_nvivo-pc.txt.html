@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body>
+<h1>Transcript</h1>
+
+<div style="margin:0em 5em 0em 5em">
+
+
+  
+
+  <div>
+<p><b>S1</b></p>
+
+	
+	<div class="alert alert-primary" role="alert">And in conclusion, we have found MySQL to be an excellent database for our website. Any questions?</div>
+  </div>
+  
+
+  <div>
+<p><b>S2</b></p>
+
+	
+	<div class="alert alert-secondary" role="alert">Yes. I have a question. Why didn't you use MongoDB? MongoDB is a web-scale database and doesn't use SQL or joins, so it's high performance.</div>
+  </div>
+  
+
+  <div>
+<p><b>S1</b></p>
+
+	
+	<div class="alert alert-primary" role="alert">That's an excellent question. We evaluated several NoSQL databases and concluded that the options are still too immature for our production needs. MySQL has a proven database that is used across the web, and it has the features we need.</div>
+  </div>
+  
+
+  <div>
+<p><b>S2</b></p>
+
+	
+	<div class="alert alert-secondary" role="alert">But it doesn't scale. Everybody knows that relational databases don't scale because they use joins and write to disk.</div>
+  </div>
+  
+
+  <div>
+<p><b>S1</b></p>
+
+	
+	<div class="alert alert-primary" role="alert">Scalability is a complicated topic, and it's hard to make a general statement like that.</div>
+  </div>
+  
+
+  <div>
+<p><b>S2</b></p>
+
+	
+	<div class="alert alert-secondary" role="alert">Relational databases weren't built for web scale. MongoDB handles web scale. You turn it on, and it scales right up.</div>
+  </div>
+  
+
+  <div>
+<p><b>S1</b></p>
+
+	
+	<div class="alert alert-primary" role="alert">It may surprise you that there are a handful of high-profile websites still using relational databases and in particular, MySQL.</div>
+  </div>
+  
+
+  <div>
+<p><b>S2</b></p>
+
+	
+	<div class="alert alert-secondary" role="alert">Relational databases have impotence mismatch.</div>
+  </div>
+  
+
+  <div>
+<p><b>S1</b></p>
+
+	
+	<div class="alert alert-primary" role="alert">I think you mean impedance.</div>
+  </div>
+  
+
+  <div>
+<p><b>S2</b></p>
+
+	
+	<div class="alert alert-secondary" role="alert">MySQL is slow as a dog. MongoDB will run circles around MySQL because MongoDB is web scale.</div>
+  </div>
+  
+
+  <div>
+<p><b>S1</b></p>
+
+	
+	<div class="alert alert-primary" role="alert">MongoDB does have some impressive benchmarks, but they do some interesting things to get those numbers. For example, when you write to MongoDB, you don't actually write anything. You stage your data to be written at a later time. If there's a problem writing your data, you're fucked. Does that sound like a good design to you?</div>
+  </div>
+  
+
+  <div>
+<p><b>S2</b></p>
+
+	
+	<div class="alert alert-secondary" role="alert">If that's what they need to do to get those kick-ass benchmarks, then it's a great design.</div>
+  </div>
+  
+
+  <div>
+<p><b>S1</b></p>
+
+	
+	<div class="alert alert-primary" role="alert">If you were stupid enough to totally ignore [their?] ability just to get benchmarks, I suggest you pipe your data to /dev/null. It will be very fast.</div>
+  </div>
+  
+
+  <div>
+<p><b>S2</b></p>
+
+	
+	<div class="alert alert-secondary" role="alert">If /dev/null is fast than web scale, I will use it. Is it web scale?</div>
+  </div>
+  
+
+  <div>
+<p><b>S1</b></p>
+
+	
+	<div class="alert alert-primary" role="alert">You are kidding me, right? I was making a joke. I mean, if you're happy writing to a database, that doesn't give you any idea that your data is actually written. Just because you want high-performance numbers, why not write to /dev/null. It's fast as hell.</div>
+  </div>
+  
+
+  <div>
+<p><b>S2</b></p>
+
+	
+	<div class="alert alert-secondary" role="alert">Does /dev/null support sharding?</div>
+  </div>
+  
+
+  <div>
+<p><b>S1</b></p>
+
+	
+	<div class="alert alert-primary" role="alert">Holy shit. For my own mental health, I'm going to assume you're just messing with me and aren't actually retarded? Do you even know what a shard is?</div>
+  </div>
+  
+
+  <div>
+<p><b>S2</b></p>
+
+	
+	<div class="alert alert-secondary" role="alert">Shards are the secret ingredient in the web scale sauce. They just work.</div>
+  </div>
+  
+
+  <div>
+<p><b>S1</b></p>
+
+	
+	<div class="alert alert-primary" role="alert">Please tell me you don't actually make a living in a technology field.</div>
+  </div>
+  
+
+  <div>
+<p><b>S2</b></p>
+
+	
+	<div class="alert alert-secondary" role="alert">I'm a web programmer.</div>
+  </div>
+  
+
+  <div>
+<p><b>S1</b></p>
+
+	
+	<div class="alert alert-primary" role="alert">As of this moment, I officially resign from my job as software engineer and will take up work on the farm shoveling pig shit and administering annual suppositories to sick horses because that will be 1,000 times more tolerable than being in the same industry as deep shits like you. You read the latest post on highscalability.com and think you're a fucking Google architect and powered slogans slogans like web scale and sharding, but you have no idea what the fuck you are talking about. You're going to blow some project to hell because you get wordy playing with software like it's a sex doll. Relational databases have been around since the fucking '70s and are some of the most mature technology you can find. Yet somehow, everything needs to be reinvented because Google and Amazon post some white papers. If you need to build a globally distributed search engine that manages petabytes of data, fine, build your own database. But if you are like 99.9% of companies, you can probably get by very well with something like MySQL and maybe Memcache.</div>
+  </div>
+  
+
+  <div>
+<p><b>S2</b></p>
+
+	
+	<div class="alert alert-secondary" role="alert">[Read disk?] will kick Memcache's ass. It's so fast and scalable.</div>
+  </div>
+  
+
+  <div>
+<p><b>S1</b></p>
+
+	
+	<div class="alert alert-primary" role="alert">Right now, I'm thinking of how much fun it will be to castrate my first bull down on the farm. I cannot wait to cut off the testicles of a 3,000 pound raging bull as it tries to kick my [heden?].</div>
+  </div>
+  
+
+  <div>
+<p><b>S2</b></p>
+
+	
+	<div class="alert alert-secondary" role="alert">MongoDB is a document database that doesn't need joins. It uses MapReduce.</div>
+  </div>
+  
+
+  <div>
+<p><b>S1</b></p>
+
+	
+	<div class="alert alert-primary" role="alert">Now, I'm cleaning assistant of chicken shits, but I don't care because I don't have to listen to the NoSQL fanboys reciting the feature list of their favorite schema free database.</div>
+  </div>
+  
+
+  <div>
+<p><b>S2</b></p>
+
+	
+	<div class="alert alert-secondary" role="alert">By writing to memory map files, MongoDB can improve its right throughput by a factor of 10.</div>
+  </div>
+  
+
+  <div>
+<p><b>S1</b></p>
+
+	
+	<div class="alert alert-primary" role="alert">What the fuck? Let's abandon transactions, consistency, durability, and pin our mission critical data to a table and give it a night it will never forget. I mean, who cares what we store as long as we do it quickly. Oh, sorry, that's right. I'm on the farm, now suffocating from the stench of 1,000 cow farts, but it smells like roses to me because I am nowhere near this moronic conversation.</div>
+  </div>
+  
+
+  <div>
+<p><b>S2</b></p>
+
+	
+	<div class="alert alert-secondary" role="alert">MongoDB uses atomic modifiers for a contention-free performance.</div>
+  </div>
+  
+
+  <div>
+<p><b>S1</b></p>
+
+	
+	<div class="alert alert-primary" role="alert">Now I've contracted more [inaudible] from cleaning cow stalls, and I'm then bleeding out my asshole. I will be dead soon, but that is a welcome relief. I will never have to witness the collapse of the world economy because NoSQL radicals talked financial institutions into abandoning perfectly good data stores because they didn't support distributed fucking MapReduce.</div>
+  </div>
+  
+
+  <div>
+<p><b>S2</b></p>
+
+	
+	<div class="alert alert-secondary" role="alert">MongoDB stores files of any size without complicating your stack.</div>
+  </div>
+  
+
+  <div>
+<p><b>S1</b></p>
+
+	
+	<div class="alert alert-primary" role="alert">Thank you for your questions. This presentation is over, and I'm fucking off to the farm to start my new career.</div>
+  </div>
+  
+
+
+</div>
+
+</body>
+</html>

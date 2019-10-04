@@ -1,0 +1,15 @@
+{% import "github.com/grokify/go-bootstrap-components" %}
+{% func TranscriptHtml(txn *Transcript) %}
+  {% for _, turn := range txn.Turns %}
+
+  <div>
+<p><b>{%s turn.SpeakerName %}</b></p>
+
+	{% code
+		speakerIndex := txn.Speakers.SpeakerNameIndex(turn.SpeakerName)
+		alert := bootstrap.NewAlertColored(speakerIndex)
+	%}
+	{%s= alert.DivHtml(turn.Text) %}
+  </div>
+  {% endfor %}
+{% endfunc %}

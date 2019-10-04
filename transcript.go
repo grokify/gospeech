@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"github.com/grokify/gotilla/time/timeutil"
+	"github.com/grokify/gotilla/type/stringsutil"
 )
 
 // S2: 00:01:20.626 Sure.
@@ -125,7 +126,8 @@ func (txn *Transcript) WriteJSON(filename string, perm os.FileMode) error {
 }
 
 type SpeakerSet struct {
-	SpeakersMap map[string]Speaker
+	ByAppearance []string
+	SpeakersMap  map[string]Speaker
 }
 
 // AddTurn adds a turn to the speaker information
@@ -134,11 +136,18 @@ func (ss *SpeakerSet) AddTurn(turn Turn) {
 	speaker, ok := ss.SpeakersMap[speakerName]
 	if !ok {
 		speaker = Speaker{}
+		ss.ByAppearance = append(ss.ByAppearance, speakerName)
 	}
 	speaker.Name = speakerName
 	speaker.Turns += 1
 	speaker.TotalDuration = timeutil.SumDurations(speaker.TotalDuration, turn.Duration())
 	ss.SpeakersMap[speakerName] = speaker
+}
+
+// SpeakerNameIndex returns the postion where
+// the speaker appears in the transcript.
+func (ss *SpeakerSet) SpeakerNameIndex(speakerName string) int {
+	return stringsutil.SliceIndexOf(speakerName, ss.ByAppearance)
 }
 
 // Speaker represents a speaker including numbers of turns spoken and total duration spoken.
