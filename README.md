@@ -23,12 +23,6 @@ See the following example:
 
 [`mongodb-is-web-scale`](data/mongodb-is-web-scale)
 
-## License
-
-Gotilla is available under the MIT license. See [LICENSE](LICENSE) for details.
-
-Gotilla &copy; 2019 by John Wang
-
  [build-status-svg]: https://api.travis-ci.org/grokify/go-diarization.svg?branch=master
  [build-status-link]: https://travis-ci.org/grokify/go-diarization
  [goreport-svg]: https://goreportcard.com/badge/github.com/grokify/go-diarization
