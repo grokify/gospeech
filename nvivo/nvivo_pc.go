@@ -1,10 +1,11 @@
-package diarization
+package nvivo
 
 import (
 	"io/ioutil"
 	"regexp"
 	"strings"
 
+	"github.com/grokify/go-diarization"
 	tu "github.com/grokify/gotilla/time/timeutil"
 )
 
@@ -17,10 +18,10 @@ var rxNVivoLinePC *regexp.Regexp = regexp.MustCompile(nVivoLinePCFormat)
 
 // ParseNVivoPcFile parses a NVivo PC file. This file has
 // begin and end times for each turn.
-func ParseNVivoPcFile(file string) (*Transcript, error) {
-	tr := &Transcript{
-		Turns:    []Turn{},
-		Speakers: SpeakerSet{SpeakersMap: map[string]Speaker{}}}
+func ParseNVivoPcFile(file string) (*diarization.Transcript, error) {
+	tr := &diarization.Transcript{
+		Turns:    []diarization.Turn{},
+		Speakers: diarization.SpeakerSet{SpeakersMap: map[string]diarization.Speaker{}}}
 	bytes, err := ioutil.ReadFile(file)
 	if err != nil {
 		return tr, err
@@ -42,8 +43,8 @@ func ParseNVivoPcFile(file string) (*Transcript, error) {
 	return tr, nil
 }
 
-func ParseNVivoTurnLine(turnString string) (Turn, error) {
-	turn := Turn{}
+func ParseNVivoTurnLine(turnString string) (diarization.Turn, error) {
+	turn := diarization.Turn{}
 	m := rxNVivoLinePC.FindStringSubmatch(turnString)
 	if len(m) != nVivoLineVars {
 		return turn, nil

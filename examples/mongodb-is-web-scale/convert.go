@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/grokify/go-diarization"
+	"github.com/grokify/go-diarization/nvivo"
 	"github.com/grokify/gotilla/fmt/fmtutil"
 	iom "github.com/grokify/gotilla/io/ioutilmore"
 	"github.com/jessevdk/go-flags"
@@ -30,7 +31,7 @@ func main() {
 
 	switch strings.ToLower(strings.TrimSpace(opts.Type)) {
 	case "nvivopc":
-		txn, err := diarization.ParseNVivoPcFile(opts.Input)
+		txn, err := nvivo.ParseNVivoPcFile(opts.Input)
 		if err != nil {
 			log.Fatal(err)
 		}
