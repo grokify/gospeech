@@ -27,17 +27,17 @@ func StreamTranscriptWebpage(qw422016 *qt422016.Writer, txn *Transcript) {
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 </head>
 <body>
+    <div style="margin:0em 5em 0em 5em">
 
-<div style="margin:0em 5em 0em 5em">
-    <h1>Transcript</h1>
+        <h1>Transcript</h1>
 
-    `)
+        `)
 //line transcript2webpage.qtpl:12
 	qw422016.N().S(TranscriptHtml(txn))
 //line transcript2webpage.qtpl:12
 	qw422016.N().S(`
-</div>
 
+    </div>
 </body>
 </html>
 `)
