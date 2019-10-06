@@ -8,79 +8,92 @@ package diarization
 import "github.com/grokify/go-bootstrap-components"
 
 //line transcript2html.qtpl:2
+import "github.com/grokify/gotilla/time/timeutil"
+
+//line transcript2html.qtpl:3
 import (
 	qtio422016 "io"
 
 	qt422016 "github.com/valyala/quicktemplate"
 )
 
-//line transcript2html.qtpl:2
+//line transcript2html.qtpl:3
 var (
 	_ = qtio422016.Copy
 	_ = qt422016.AcquireByteBuffer
 )
 
-//line transcript2html.qtpl:2
+//line transcript2html.qtpl:3
 func StreamTranscriptHtml(qw422016 *qt422016.Writer, txn *Transcript) {
-//line transcript2html.qtpl:2
+//line transcript2html.qtpl:3
 	qw422016.N().S(`
   `)
-//line transcript2html.qtpl:3
+//line transcript2html.qtpl:4
 	for _, turn := range txn.Turns {
-//line transcript2html.qtpl:3
+//line transcript2html.qtpl:4
 		qw422016.N().S(`
 
   <div>
-<p><b>`)
-//line transcript2html.qtpl:6
+    `)
+//line transcript2html.qtpl:8
+		dinfo := timeutil.NewDurationInfo(turn.TimeBegin)
+
+//line transcript2html.qtpl:9
+		qw422016.N().S(`
+	<p>`)
+//line transcript2html.qtpl:10
+		qw422016.N().S(timeutil.FormatDurationInfoMinSec(dinfo))
+//line transcript2html.qtpl:10
+		qw422016.N().S(` - <b>`)
+//line transcript2html.qtpl:10
 		qw422016.E().S(turn.SpeakerName)
-//line transcript2html.qtpl:6
+//line transcript2html.qtpl:10
 		qw422016.N().S(`</b></p>
 
 	`)
-//line transcript2html.qtpl:9
+//line transcript2html.qtpl:13
 		speakerIndex := txn.Speakers.SpeakerNameIndex(turn.SpeakerName)
 		alert := bootstrap.NewAlertColored(speakerIndex)
 
-//line transcript2html.qtpl:11
+//line transcript2html.qtpl:15
 		qw422016.N().S(`
 	`)
-//line transcript2html.qtpl:12
+//line transcript2html.qtpl:16
 		qw422016.N().S(alert.DivHtml(turn.Text))
-//line transcript2html.qtpl:12
+//line transcript2html.qtpl:16
 		qw422016.N().S(`
   </div>
   `)
-//line transcript2html.qtpl:14
+//line transcript2html.qtpl:18
 	}
-//line transcript2html.qtpl:14
+//line transcript2html.qtpl:18
 	qw422016.N().S(`
 `)
-//line transcript2html.qtpl:15
+//line transcript2html.qtpl:19
 }
 
-//line transcript2html.qtpl:15
+//line transcript2html.qtpl:19
 func WriteTranscriptHtml(qq422016 qtio422016.Writer, txn *Transcript) {
-//line transcript2html.qtpl:15
+//line transcript2html.qtpl:19
 	qw422016 := qt422016.AcquireWriter(qq422016)
-//line transcript2html.qtpl:15
+//line transcript2html.qtpl:19
 	StreamTranscriptHtml(qw422016, txn)
-//line transcript2html.qtpl:15
+//line transcript2html.qtpl:19
 	qt422016.ReleaseWriter(qw422016)
-//line transcript2html.qtpl:15
+//line transcript2html.qtpl:19
 }
 
-//line transcript2html.qtpl:15
+//line transcript2html.qtpl:19
 func TranscriptHtml(txn *Transcript) string {
-//line transcript2html.qtpl:15
+//line transcript2html.qtpl:19
 	qb422016 := qt422016.AcquireByteBuffer()
-//line transcript2html.qtpl:15
+//line transcript2html.qtpl:19
 	WriteTranscriptHtml(qb422016, txn)
-//line transcript2html.qtpl:15
+//line transcript2html.qtpl:19
 	qs422016 := string(qb422016.B)
-//line transcript2html.qtpl:15
+//line transcript2html.qtpl:19
 	qt422016.ReleaseByteBuffer(qb422016)
-//line transcript2html.qtpl:15
+//line transcript2html.qtpl:19
 	return qs422016
-//line transcript2html.qtpl:15
+//line transcript2html.qtpl:19
 }

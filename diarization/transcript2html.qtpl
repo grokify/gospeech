@@ -1,9 +1,13 @@
 {% import "github.com/grokify/go-bootstrap-components" %}
+{% import "github.com/grokify/gotilla/time/timeutil" %}
 {% func TranscriptHtml(txn *Transcript) %}
   {% for _, turn := range txn.Turns %}
 
   <div>
-<p><b>{%s turn.SpeakerName %}</b></p>
+    {% code
+	  dinfo := timeutil.NewDurationInfo(turn.TimeBegin)
+	%}
+	<p>{%s= timeutil.FormatDurationInfoMinSec(dinfo) %} - <b>{%s turn.SpeakerName %}</b></p>
 
 	{% code
 		speakerIndex := txn.Speakers.SpeakerNameIndex(turn.SpeakerName)

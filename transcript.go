@@ -25,11 +25,13 @@ var rxEnd *regexp.Regexp = regexp.MustCompile(rxEndFormat)
 
 // Transcript represents a text representation of a conversation.
 type Transcript struct {
+	Name          string        `json:"name"`
 	Turns         []Turn        `json:"turns"`
 	Speakers      SpeakerSet    `json:"speakers"`
 	TotalDuration time.Duration `json:"totalDuration"`
 }
 
+// NewTranscript returns a new Transcript struct.
 func NewTranscript() Transcript {
 	return Transcript{
 		Turns:    []Turn{},
