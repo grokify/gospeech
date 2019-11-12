@@ -1,4 +1,4 @@
-package diarization
+package google
 
 import (
 	"encoding/json"
@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"strconv"
 
+	"github.com/grokify/go-diarization"
 	tu "github.com/grokify/gotilla/time/timeutil"
 	speechpb "google.golang.org/genproto/googleapis/cloud/speech/v1p1beta1"
 )
@@ -18,8 +19,8 @@ https://godoc.org/google.golang.org/genproto/googleapis/cloud/speech/v1#LongRunn
 
 */
 
-func LongRunningRecognizeResponseToTranscript(res *speechpb.LongRunningRecognizeResponse) (Transcript, error) {
-	txn := NewTranscript()
+func LongRunningRecognizeResponseToTranscript(res *speechpb.LongRunningRecognizeResponse) (diarization.Transcript, error) {
+	txn := diarization.NewTranscript()
 	lastRes := res.Results[len(res.Results)-1]
 	fmt.Printf("NUM_ALTS[%v]\n", len(lastRes.Alternatives))
 	if len(lastRes.Alternatives) != 1 {
@@ -27,7 +28,7 @@ func LongRunningRecognizeResponseToTranscript(res *speechpb.LongRunningRecognize
 	}
 	alt := lastRes.Alternatives[0]
 	curSpeakerTag := int32(0)
-	curTurn := Turn{}
+	curTurn := diarization.Turn{}
 	for _, word := range alt.Words {
 		if word.SpeakerTag <= 0 {
 			return txn, fmt.Errorf("E_NO_SPEAKER_TAG [%v]", word.SpeakerTag)
@@ -36,13 +37,13 @@ func LongRunningRecognizeResponseToTranscript(res *speechpb.LongRunningRecognize
 		if curSpeakerTag == 0 {
 			curSpeakerTag = word.SpeakerTag
 		} else if curSpeakerTag != word.SpeakerTag {
-			newTurn := Turn{
+			newTurn := diarization.Turn{
 				SpeakerName: curTurn.SpeakerName,
 				Text:        curTurn.Text,
 				TimeBegin:   curTurn.TimeBegin,
 				TimeEnd:     curTurn.TimeEnd}
 			txn.Turns = append(txn.Turns, newTurn)
-			curTurn = Turn{}
+			curTurn = diarization.Turn{}
 		}
 		curSpeakerTag = word.SpeakerTag
 		curTurn.Text += " " + word.Word
@@ -74,4 +75,15 @@ func ReadLongRunningRecognizeResponseFile(file string) (*speechpb.LongRunningRec
 func ReadLongRunningRecognizeResponse(bytes []byte) (*speechpb.LongRunningRecognizeResponse, error) {
 	res := &speechpb.LongRunningRecognizeResponse{}
 	return res, json.Unmarshal(bytes, res)
+}
+
+// NewTranscriptFile attempts to read a Deepgram
+// transcript file.
+func NewTranscriptFileLongRunningResponse(file string) (*diarization.Transcript, error) {
+	resp, err := ReadLongRunningRecognizeResponseFile(file)
+	if err != nil {
+		return nil, err
+	}
+	txn, err := LongRunningRecognizeResponseToTranscript(resp)
+	return &txn, err
 }

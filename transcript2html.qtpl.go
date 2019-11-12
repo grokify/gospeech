@@ -27,73 +27,93 @@ var (
 func StreamTranscriptHtml(qw422016 *qt422016.Writer, txn *Transcript) {
 //line transcript2html.qtpl:3
 	qw422016.N().S(`
+
+  <p>Speakers:</p>
+  <ol>
   `)
-//line transcript2html.qtpl:4
+//line transcript2html.qtpl:7
+	for _, speakerName := range txn.Speakers.ByAppearance {
+//line transcript2html.qtpl:7
+		qw422016.N().S(`
+    <li>`)
+//line transcript2html.qtpl:8
+		qw422016.E().S(speakerName)
+//line transcript2html.qtpl:8
+		qw422016.N().S(`</li>
+  `)
+//line transcript2html.qtpl:9
+	}
+//line transcript2html.qtpl:9
+	qw422016.N().S(`
+  </ol>
+
+  `)
+//line transcript2html.qtpl:12
 	for _, turn := range txn.Turns {
-//line transcript2html.qtpl:4
+//line transcript2html.qtpl:12
 		qw422016.N().S(`
 
   <div>
     `)
-//line transcript2html.qtpl:8
+//line transcript2html.qtpl:16
 		dinfo := timeutil.NewDurationInfo(turn.TimeBegin)
 
-//line transcript2html.qtpl:9
+//line transcript2html.qtpl:17
 		qw422016.N().S(`
 	<p>`)
-//line transcript2html.qtpl:10
+//line transcript2html.qtpl:18
 		qw422016.N().S(timeutil.FormatDurationInfoMinSec(dinfo))
-//line transcript2html.qtpl:10
+//line transcript2html.qtpl:18
 		qw422016.N().S(` - <b>`)
-//line transcript2html.qtpl:10
+//line transcript2html.qtpl:18
 		qw422016.E().S(turn.SpeakerName)
-//line transcript2html.qtpl:10
+//line transcript2html.qtpl:18
 		qw422016.N().S(`</b></p>
 
 	`)
-//line transcript2html.qtpl:13
+//line transcript2html.qtpl:21
 		speakerIndex := txn.Speakers.SpeakerNameIndex(turn.SpeakerName)
 		alert := bootstrap.NewAlertColored(speakerIndex)
 
-//line transcript2html.qtpl:15
+//line transcript2html.qtpl:23
 		qw422016.N().S(`
 	`)
-//line transcript2html.qtpl:16
+//line transcript2html.qtpl:24
 		qw422016.N().S(alert.DivHtml(turn.Text))
-//line transcript2html.qtpl:16
+//line transcript2html.qtpl:24
 		qw422016.N().S(`
   </div>
   `)
-//line transcript2html.qtpl:18
+//line transcript2html.qtpl:26
 	}
-//line transcript2html.qtpl:18
+//line transcript2html.qtpl:26
 	qw422016.N().S(`
 `)
-//line transcript2html.qtpl:19
+//line transcript2html.qtpl:27
 }
 
-//line transcript2html.qtpl:19
+//line transcript2html.qtpl:27
 func WriteTranscriptHtml(qq422016 qtio422016.Writer, txn *Transcript) {
-//line transcript2html.qtpl:19
+//line transcript2html.qtpl:27
 	qw422016 := qt422016.AcquireWriter(qq422016)
-//line transcript2html.qtpl:19
+//line transcript2html.qtpl:27
 	StreamTranscriptHtml(qw422016, txn)
-//line transcript2html.qtpl:19
+//line transcript2html.qtpl:27
 	qt422016.ReleaseWriter(qw422016)
-//line transcript2html.qtpl:19
+//line transcript2html.qtpl:27
 }
 
-//line transcript2html.qtpl:19
+//line transcript2html.qtpl:27
 func TranscriptHtml(txn *Transcript) string {
-//line transcript2html.qtpl:19
+//line transcript2html.qtpl:27
 	qb422016 := qt422016.AcquireByteBuffer()
-//line transcript2html.qtpl:19
+//line transcript2html.qtpl:27
 	WriteTranscriptHtml(qb422016, txn)
-//line transcript2html.qtpl:19
+//line transcript2html.qtpl:27
 	qs422016 := string(qb422016.B)
-//line transcript2html.qtpl:19
+//line transcript2html.qtpl:27
 	qt422016.ReleaseByteBuffer(qb422016)
-//line transcript2html.qtpl:19
+//line transcript2html.qtpl:27
 	return qs422016
-//line transcript2html.qtpl:19
+//line transcript2html.qtpl:27
 }

@@ -1,6 +1,14 @@
 {% import "github.com/grokify/go-bootstrap-components" %}
 {% import "github.com/grokify/gotilla/time/timeutil" %}
 {% func TranscriptHtml(txn *Transcript) %}
+
+  <p>Speakers:</p>
+  <ol>
+  {% for _, speakerName := range txn.Speakers.ByAppearance %}
+    <li>{%s speakerName %}</li>
+  {% endfor %}
+  </ol>
+
   {% for _, turn := range txn.Turns %}
 
   <div>
