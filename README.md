@@ -23,11 +23,11 @@ See the following example:
 
 [`mongodb-is-web-scale`](data/mongodb-is-web-scale)
 
- [build-status-svg]: https://api.travis-ci.org/grokify/go-diarization.svg?branch=master
- [build-status-link]: https://travis-ci.org/grokify/go-diarization
- [goreport-svg]: https://goreportcard.com/badge/github.com/grokify/go-diarization
- [goreport-link]: https://goreportcard.com/report/github.com/grokify/go-diarization
+ [build-status-svg]: https://api.travis-ci.org/grokify/go-transcribe.svg?branch=master
+ [build-status-link]: https://github.com/grokify/go-transcribe/actions/workflows/test.yaml
+ [goreport-svg]: https://goreportcard.com/badge/github.com/grokify/go-transcribe
+ [goreport-link]: https://goreportcard.com/report/github.com/grokify/go-transcribe
  [docs-godoc-svg]: https://img.shields.io/badge/docs-godoc-blue.svg
- [docs-godoc-link]: https://godoc.org/github.com/grokify/go-diarization
+ [docs-godoc-link]: https://godoc.org/github.com/grokify/go-transcribe
  [license-svg]: https://img.shields.io/badge/license-MIT-blue.svg
- [license-link]: https://github.com/grokify/go-diarization/blob/master/LICENSE
+ [license-link]: https://github.com/grokify/go-transcribe/blob/master/LICENSE
