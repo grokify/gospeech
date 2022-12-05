@@ -32,7 +32,7 @@ func NewTranscriptFile(file string) (*diarization.Transcript, error) {
 func NewTranscriptGoogleResponse(gtxn Transcript) (*diarization.Transcript, error) {
 	//ctxn := diarization.NewTranscript()
 	if len(gtxn.Results) == 0 {
-		return nil, fmt.Errorf("No Results [%v]", len(gtxn.Results))
+		return nil, fmt.Errorf("no results [%v]", len(gtxn.Results))
 	}
 	lastResult := gtxn.Results[len(gtxn.Results)-1]
 	altCount := len(lastResult.Alternatives)

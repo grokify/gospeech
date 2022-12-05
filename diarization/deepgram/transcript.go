@@ -42,7 +42,6 @@ func (dtxn *Transcript) MaxAltCount() int {
 		}
 	}
 	return maxAltCount
-
 }
 
 // Validate checks the transcript. This initially checks
@@ -69,7 +68,7 @@ type Metadata struct {
 	Duration         float64   `json:"duration"`
 	Channels         int       `json:"channels"`
 	TranscriptionKey string    `json:"transcription_key"`
-	RequestId        string    `json:"request_id"`
+	RequestID        string    `json:"request_id"`
 }
 
 type Results struct {

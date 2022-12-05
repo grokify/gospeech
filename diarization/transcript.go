@@ -145,7 +145,7 @@ func (ss *SpeakerSet) AddTurn(turn Turn) {
 	ss.SpeakersMap[speakerName] = speaker
 }
 
-// SpeakerNameIndex returns the postion where the speaker appears in the transcript.
+// SpeakerNameIndex returns the position where the speaker appears in the transcript.
 func (ss *SpeakerSet) SpeakerNameIndex(speakerName string) int {
 	return stringsutil.SliceIndex(ss.ByAppearance, speakerName, false, nil)
 }
