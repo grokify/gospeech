@@ -7,8 +7,10 @@ import (
 	"strconv"
 
 	"github.com/grokify/go-transcribe/diarization"
-	tu "github.com/grokify/mogo/time/timeutil"
-	speechpb "google.golang.org/genproto/googleapis/cloud/speech/v1p1beta1"
+	"github.com/grokify/mogo/time/timeutil"
+
+	// speechpb "google.golang.org/genproto/googleapis/cloud/speech/v1p1beta1"
+	"cloud.google.com/go/speech/apiv1p1beta1/speechpb"
 )
 
 const speakerNamePrefix string = "S"
@@ -48,8 +50,8 @@ func LongRunningRecognizeResponseToTranscript(res *speechpb.LongRunningRecognize
 		curSpeakerTag = word.SpeakerTag
 		curTurn.Text += " " + word.Word
 		curTurn.SpeakerName = speakerNamePrefix + strconv.Itoa(int(word.SpeakerTag))
-		thisBeginDur := tu.DurationFromProtobuf(word.StartTime)
-		thisEndDur := tu.DurationFromProtobuf(word.EndTime)
+		thisBeginDur := timeutil.DurationFromProtobuf(word.StartTime)
+		thisEndDur := timeutil.DurationFromProtobuf(word.EndTime)
 		if curTurn.TimeBegin.Nanoseconds() == 0 ||
 			thisBeginDur.Nanoseconds() < curTurn.TimeBegin.Nanoseconds() {
 			curTurn.TimeBegin = thisBeginDur
