@@ -3,7 +3,6 @@ package diarization
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"regexp"
 	"strings"
@@ -69,7 +68,7 @@ func (turn *Turn) Duration() time.Duration {
 
 // ParseTranscribeMeFile reads a TranscribeMe.com text file.
 func ParseTranscribeMeFile(filename string) (*Transcript, error) {
-	bytes, err := ioutil.ReadFile(filename)
+	bytes, err := os.ReadFile(filename)
 	if err != nil {
 		return nil, err
 	}
@@ -124,7 +123,7 @@ func (txn *Transcript) WriteJSON(filename string, perm os.FileMode) error {
 	if err != nil {
 		return err
 	}
-	return ioutil.WriteFile(filename, data, perm)
+	return os.WriteFile(filename, data, perm)
 }
 
 type SpeakerSet struct {

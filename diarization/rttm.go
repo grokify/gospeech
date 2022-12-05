@@ -6,6 +6,8 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/grokify/mogo/errors/errorsutil"
 )
 
 const (
@@ -35,7 +37,15 @@ func (rttm *RTTM) WriteFile(filename string, perm os.FileMode) error {
 	}
 	defer f.Close()
 	for _, turn := range rttm.Turns {
-		f.WriteString(turn.Encode() + "\n")
+		_, err := f.WriteString(turn.Encode() + "\n")
+		if err != nil {
+			err2 := f.Close()
+			if err2 == nil {
+				return err
+			} else {
+				return errorsutil.Wrapf(err, err2.Error())
+			}
+		}
 	}
 	return f.Sync()
 }

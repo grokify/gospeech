@@ -3,7 +3,7 @@ package google
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"os"
 	"strconv"
 
 	"github.com/grokify/go-transcribe/diarization"
@@ -65,7 +65,7 @@ func LongRunningRecognizeResponseToTranscript(res *speechpb.LongRunningRecognize
 }
 
 func ReadLongRunningRecognizeResponseFile(file string) (*speechpb.LongRunningRecognizeResponse, error) {
-	bytes, err := ioutil.ReadFile(file)
+	bytes, err := os.ReadFile(file)
 	if err != nil {
 		return nil, err
 	}

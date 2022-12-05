@@ -3,7 +3,7 @@ package deepgram
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"os"
 	"strconv"
 	"strings"
 	"time"
@@ -22,7 +22,7 @@ type Transcript struct {
 // transcript file.
 func NewTranscriptFile(file string) (*Transcript, error) {
 	txn := Transcript{}
-	bytes, err := ioutil.ReadFile(file)
+	bytes, err := os.ReadFile(file)
 	if err != nil {
 		return &txn, err
 	}

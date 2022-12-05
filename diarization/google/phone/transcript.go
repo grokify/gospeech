@@ -3,7 +3,7 @@ package phone
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"os"
 	"strconv"
 	"strings"
 	"time"
@@ -16,7 +16,7 @@ type Transcript struct {
 }
 
 func NewTranscriptFile(file string) (*diarization.Transcript, error) {
-	bytes, err := ioutil.ReadFile(file)
+	bytes, err := os.ReadFile(file)
 	if err != nil {
 		return nil, err
 	}
@@ -87,7 +87,7 @@ type Word struct {
 	StartTime  string  `json:"startTime"`
 	EndTime    string  `json:"endTime"`
 	Word       string  `json:"word"`
-	Confidence float64 `json:confidence`
+	Confidence float64 `json:"confidence"`
 	SpeakerTag int64   `json:"speakerTag"`
 }
 

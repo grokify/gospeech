@@ -1,7 +1,7 @@
 package nvivo
 
 import (
-	"io/ioutil"
+	"os"
 	"regexp"
 	"strings"
 
@@ -22,7 +22,7 @@ func ParseNVivoPcFile(file string) (*diarization.Transcript, error) {
 	tr := &diarization.Transcript{
 		Turns:    []diarization.Turn{},
 		Speakers: diarization.SpeakerSet{SpeakersMap: map[string]diarization.Speaker{}}}
-	bytes, err := ioutil.ReadFile(file)
+	bytes, err := os.ReadFile(file)
 	if err != nil {
 		return tr, err
 	}
