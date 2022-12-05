@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/grokify/go-diarization"
+	"github.com/grokify/go-transcribe/diarization"
 )
 
 type Transcript struct {

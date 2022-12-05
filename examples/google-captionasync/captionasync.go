@@ -48,7 +48,7 @@ https://godoc.org/google.golang.org/genproto/googleapis/cloud/speech/v1p1beta1#R
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Fprintln(os.Stderr, usage)
+		fmt.Fprint(os.Stderr, usage)
 		os.Exit(2)
 	}
 

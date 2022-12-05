@@ -8,8 +8,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/grokify/go-diarization"
-	"github.com/grokify/gotilla/time/timeutil"
+	"github.com/grokify/go-transcribe/diarization"
+	"github.com/grokify/mogo/time/timeutil"
 )
 
 // Transcript represents a Deepgram transcript.

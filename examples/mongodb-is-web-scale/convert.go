@@ -6,11 +6,11 @@ import (
 	"log"
 	"strings"
 
-	"github.com/grokify/go-diarization"
-	"github.com/grokify/go-diarization/nvivo"
-	"github.com/grokify/gotilla/fmt/fmtutil"
-	iom "github.com/grokify/gotilla/io/ioutilmore"
-	"github.com/jessevdk/go-flags"
+	"github.com/grokify/go-transcribe/diarization"
+	"github.com/grokify/go-transcribe/diarization/nvivo"
+	"github.com/grokify/mogo/fmt/fmtutil"
+	iom "github.com/grokify/mogo/io/ioutilmore"
+	flags "github.com/jessevdk/go-flags"
 )
 
 var opts struct {

@@ -5,10 +5,10 @@
 package diarization
 
 //line transcript2html.qtpl:1
-import "github.com/grokify/go-bootstrap-components"
+import "github.com/grokify/bootstrapper" 
 
 //line transcript2html.qtpl:2
-import "github.com/grokify/gotilla/time/timeutil"
+import "github.com/grokify/mogo/time/timeutil"
 
 //line transcript2html.qtpl:3
 import (
@@ -73,13 +73,13 @@ func StreamTranscriptHtml(qw422016 *qt422016.Writer, txn *Transcript) {
 	`)
 //line transcript2html.qtpl:21
 		speakerIndex := txn.Speakers.SpeakerNameIndex(turn.SpeakerName)
-		alert := bootstrap.NewAlertColored(speakerIndex)
+		alert := bootstrapper.NewAlertColored(speakerIndex)
 
 //line transcript2html.qtpl:23
 		qw422016.N().S(`
 	`)
 //line transcript2html.qtpl:24
-		qw422016.N().S(alert.DivHtml(turn.Text))
+		qw422016.N().S(alert.DivHTML(turn.Text))
 //line transcript2html.qtpl:24
 		qw422016.N().S(`
   </div>

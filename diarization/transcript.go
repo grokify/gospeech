@@ -9,8 +9,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/grokify/gotilla/time/timeutil"
-	"github.com/grokify/gotilla/type/stringsutil"
+	"github.com/grokify/mogo/time/timeutil"
+	"github.com/grokify/mogo/type/stringsutil"
 )
 
 // S2: 00:01:20.626 Sure.
@@ -146,10 +146,9 @@ func (ss *SpeakerSet) AddTurn(turn Turn) {
 	ss.SpeakersMap[speakerName] = speaker
 }
 
-// SpeakerNameIndex returns the postion where
-// the speaker appears in the transcript.
+// SpeakerNameIndex returns the postion where the speaker appears in the transcript.
 func (ss *SpeakerSet) SpeakerNameIndex(speakerName string) int {
-	return stringsutil.SliceIndexOf(speakerName, ss.ByAppearance)
+	return stringsutil.SliceIndex(ss.ByAppearance, speakerName, false, nil)
 }
 
 // Speaker represents a speaker including numbers of turns spoken and total duration spoken.

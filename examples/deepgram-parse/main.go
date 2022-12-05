@@ -5,10 +5,10 @@ import (
 	"io/ioutil"
 	"log"
 
-	"github.com/grokify/go-diarization"
-	"github.com/grokify/go-diarization/deepgram"
-	"github.com/grokify/gotilla/fmt/fmtutil"
-	"github.com/jessevdk/go-flags"
+	"github.com/grokify/go-transcribe/diarization"
+	"github.com/grokify/go-transcribe/diarization/deepgram"
+	"github.com/grokify/mogo/fmt/fmtutil"
+	flags "github.com/jessevdk/go-flags"
 )
 
 type Options struct {

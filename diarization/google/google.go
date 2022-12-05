@@ -6,8 +6,8 @@ import (
 	"io/ioutil"
 	"strconv"
 
-	"github.com/grokify/go-diarization"
-	tu "github.com/grokify/gotilla/time/timeutil"
+	"github.com/grokify/go-transcribe/diarization"
+	tu "github.com/grokify/mogo/time/timeutil"
 	speechpb "google.golang.org/genproto/googleapis/cloud/speech/v1p1beta1"
 )
 

@@ -4,9 +4,10 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/grokify/go-diarization"
-	"github.com/grokify/gotilla/fmt/fmtutil"
-	iom "github.com/grokify/gotilla/io/ioutilmore"
+	"github.com/grokify/go-transcribe/diarization"
+	"github.com/grokify/go-transcribe/diarization/google"
+	"github.com/grokify/mogo/fmt/fmtutil"
+	iom "github.com/grokify/mogo/io/ioutilmore"
 )
 
 /*
@@ -18,7 +19,7 @@ https://godoc.org/google.golang.org/genproto/googleapis/cloud/speech/v1#LongRunn
 func main() {
 	file := "../mongodb-is-web-scale/web-scale_b2F-DItXtZs.mp3_tr_google_standard.json"
 
-	res, err := diarization.ReadLongRunningRecognizeResponseFile(file)
+	res, err := google.ReadLongRunningRecognizeResponseFile(file)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -38,7 +39,7 @@ func main() {
 		}
 	}
 
-	txn, err := diarization.LongRunningRecognizeResponseToTranscript(res)
+	txn, err := google.LongRunningRecognizeResponseToTranscript(res)
 	if err != nil {
 		log.Fatal(err)
 	}

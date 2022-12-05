@@ -1,5 +1,5 @@
-{% import "github.com/grokify/go-bootstrap-components" %}
-{% import "github.com/grokify/gotilla/time/timeutil" %}
+{% import "github.com/grokify/bootstrapper" %}
+{% import "github.com/grokify/mogo/time/timeutil" %}
 {% func TranscriptHtml(txn *Transcript) %}
 
   <p>Speakers:</p>
@@ -19,9 +19,9 @@
 
 	{% code
 		speakerIndex := txn.Speakers.SpeakerNameIndex(turn.SpeakerName)
-		alert := bootstrap.NewAlertColored(speakerIndex)
+		alert := bootstrapper.NewAlertColored(speakerIndex)
 	%}
-	{%s= alert.DivHtml(turn.Text) %}
+	{%s= alert.DivHTML(turn.Text) %}
   </div>
   {% endfor %}
 {% endfunc %}

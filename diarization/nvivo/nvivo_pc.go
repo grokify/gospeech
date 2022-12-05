@@ -5,8 +5,8 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/grokify/go-diarization"
-	tu "github.com/grokify/gotilla/time/timeutil"
+	"github.com/grokify/go-transcribe/diarization"
+	tu "github.com/grokify/mogo/time/timeutil"
 )
 
 const (

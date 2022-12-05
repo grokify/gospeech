@@ -1,7 +1,7 @@
 package diarization
 
 import (
-	"github.com/grokify/gotilla/time/timeutil"
+	"github.com/grokify/mogo/time/timeutil"
 )
 
 // TranscriptToRTTM converts a transcript struct to a RTTM
