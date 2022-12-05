@@ -23,7 +23,7 @@ See the following example:
 
 [`mongodb-is-web-scale`](data/mongodb-is-web-scale)
 
- [build-status-svg]: https://api.travis-ci.org/grokify/go-transcribe.svg?branch=master
+ [build-status-svg]: https://github.com/grokify/goauth/workflows/test/badge.svg
  [build-status-link]: https://github.com/grokify/go-transcribe/actions/workflows/test.yaml
  [goreport-svg]: https://goreportcard.com/badge/github.com/grokify/go-transcribe
  [goreport-link]: https://goreportcard.com/report/github.com/grokify/go-transcribe
