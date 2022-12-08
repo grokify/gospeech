@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/grokify/go-transcribe/diarization"
-	"github.com/grokify/go-transcribe/diarization/google"
+	"github.com/grokify/gospeech/diarization"
+	"github.com/grokify/gospeech/diarization/google"
 	"github.com/grokify/mogo/fmt/fmtutil"
 	iom "github.com/grokify/mogo/io/ioutilmore"
 )

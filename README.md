@@ -1,4 +1,4 @@
-# Go Diarization
+# Go Speech
 
 [![Build Status][build-status-svg]][build-status-link]
 [![Go Report Card][goreport-svg]][goreport-link]
@@ -24,10 +24,10 @@ See the following example:
 [`mongodb-is-web-scale`](data/mongodb-is-web-scale)
 
  [build-status-svg]: https://github.com/grokify/goauth/workflows/test/badge.svg
- [build-status-link]: https://github.com/grokify/go-transcribe/actions/workflows/test.yaml
- [goreport-svg]: https://goreportcard.com/badge/github.com/grokify/go-transcribe
- [goreport-link]: https://goreportcard.com/report/github.com/grokify/go-transcribe
+ [build-status-link]: https://github.com/grokify/gospeech/actions/workflows/test.yaml
+ [goreport-svg]: https://goreportcard.com/badge/github.com/grokify/gospeech
+ [goreport-link]: https://goreportcard.com/report/github.com/grokify/gospeech
  [docs-godoc-svg]: https://img.shields.io/badge/docs-godoc-blue.svg
- [docs-godoc-link]: https://godoc.org/github.com/grokify/go-transcribe
+ [docs-godoc-link]: https://godoc.org/github.com/grokify/gospeech
  [license-svg]: https://img.shields.io/badge/license-MIT-blue.svg
- [license-link]: https://github.com/grokify/go-transcribe/blob/master/LICENSE
+ [license-link]: https://github.com/grokify/gospeech/blob/master/LICENSE

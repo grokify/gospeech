@@ -1,4 +1,4 @@
-module github.com/grokify/go-transcribe
+module github.com/grokify/gospeech
 
 go 1.19
 

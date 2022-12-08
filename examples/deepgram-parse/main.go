@@ -5,8 +5,8 @@ import (
 	"io/ioutil"
 	"log"
 
-	"github.com/grokify/go-transcribe/diarization"
-	"github.com/grokify/go-transcribe/diarization/deepgram"
+	"github.com/grokify/gospeech/diarization"
+	"github.com/grokify/gospeech/diarization/deepgram"
 	"github.com/grokify/mogo/fmt/fmtutil"
 	flags "github.com/jessevdk/go-flags"
 )

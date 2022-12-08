@@ -5,7 +5,7 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/grokify/go-transcribe/diarization"
+	"github.com/grokify/gospeech/diarization"
 	tu "github.com/grokify/mogo/time/timeutil"
 )
 

@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/grokify/go-transcribe/diarization"
+	"github.com/grokify/gospeech/diarization"
 	"github.com/grokify/mogo/time/timeutil"
 )
 

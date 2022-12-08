@@ -6,7 +6,7 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/grokify/go-transcribe/diarization"
+	"github.com/grokify/gospeech/diarization"
 	"github.com/grokify/mogo/time/timeutil"
 
 	// speechpb "google.golang.org/genproto/googleapis/cloud/speech/v1p1beta1"
