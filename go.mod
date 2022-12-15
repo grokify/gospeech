@@ -5,7 +5,7 @@ go 1.19
 require (
 	cloud.google.com/go/speech v1.9.0
 	github.com/grokify/bootstrapper v0.4.0
-	github.com/grokify/mogo v0.42.2
+	github.com/grokify/mogo v0.43.0
 	github.com/jessevdk/go-flags v1.5.0
 	github.com/valyala/quicktemplate v1.7.0
 	google.golang.org/genproto v0.0.0-20221207170731-23e4bf6bdc37
@@ -26,7 +26,7 @@ require (
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fastjson v1.6.3 // indirect
 	go.opencensus.io v0.24.0 // indirect
-	golang.org/x/exp v0.0.0-20221208044002-44028be4359e // indirect
+	golang.org/x/exp v0.0.0-20221212164502-fae10dda9338 // indirect
 	golang.org/x/net v0.4.0 // indirect
 	golang.org/x/oauth2 v0.3.0 // indirect
 	golang.org/x/sys v0.3.0 // indirect
