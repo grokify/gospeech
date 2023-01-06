@@ -3,7 +3,7 @@ module github.com/grokify/gospeech
 go 1.19
 
 require (
-	cloud.google.com/go/speech v1.9.0
+	cloud.google.com/go/speech v1.11.0
 	github.com/grokify/bootstrapper v0.4.0
 	github.com/grokify/mogo v0.42.2
 	github.com/jessevdk/go-flags v1.5.0
