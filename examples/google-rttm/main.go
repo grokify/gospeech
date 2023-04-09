@@ -7,7 +7,7 @@ import (
 	"github.com/grokify/gospeech/diarization"
 	"github.com/grokify/gospeech/diarization/google"
 	"github.com/grokify/mogo/fmt/fmtutil"
-	iom "github.com/grokify/mogo/io/ioutilmore"
+	"github.com/grokify/mogo/os/osutil"
 )
 
 /*
@@ -45,7 +45,7 @@ func main() {
 	}
 	fmtutil.PrintJSON(txn)
 
-	err = iom.WriteFileJSON(file+".json", txn, 0644, "", "  ")
+	err = osutil.WriteFileJSON(file+".json", txn, 0644, "", "  ")
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -121,7 +121,7 @@ func CanonicalTranscriptFromDeepgram(dtxn *Transcript) (*diarization.Transcript,
 			firstWord = false
 			continue
 		} else if speakerName == curTurn.SpeakerName {
-			curTurn.TimeEnd = timeutil.NewDurationSeconds(float64(word.End))
+			curTurn.TimeEnd = timeutil.NewDuration(0, 0, 0, float64(word.End), 0)
 			curTurn.TimeEndRaw = strconv.FormatFloat(float64(word.End), 'E', -1, 64)
 			curTurn.Text += " " + formattedWords[i]
 		} else {
@@ -144,9 +144,9 @@ func CanonicalTranscriptFromDeepgram(dtxn *Transcript) (*diarization.Transcript,
 func newTurnForWord(word Word, formattedWord string) diarization.Turn {
 	return diarization.Turn{
 		SpeakerName:  "speaker" + strconv.Itoa(word.Speaker),
-		TimeBegin:    timeutil.NewDurationSeconds(float64(word.Start)),
+		TimeBegin:    timeutil.NewDuration(0, 0, 0, float64(word.Start), 0),
 		TimeBeginRaw: strconv.FormatFloat(float64(word.Start), 'E', -1, 64),
-		TimeEnd:      timeutil.NewDurationSeconds(float64(word.End)),
+		TimeEnd:      timeutil.NewDuration(0, 0, 0, float64(word.End), 0),
 		TimeEndRaw:   strconv.FormatFloat(float64(word.End), 'E', -1, 64),
 		Text:         formattedWord}
 }

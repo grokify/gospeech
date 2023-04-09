@@ -9,7 +9,7 @@ import (
 	"github.com/grokify/gospeech/diarization"
 	"github.com/grokify/gospeech/diarization/nvivo"
 	"github.com/grokify/mogo/fmt/fmtutil"
-	iom "github.com/grokify/mogo/io/ioutilmore"
+	"github.com/grokify/mogo/os/osutil"
 	flags "github.com/jessevdk/go-flags"
 )
 
@@ -39,7 +39,7 @@ func main() {
 		rttm := diarization.TranscriptToRTTM(txn)
 		rttm.WriteFile(opts.Output+".rttm", 0644)
 		fmt.Printf("WROTE [%v]\n", opts.Output+".rttm")
-		err = iom.WriteFileJSON(opts.Output+".json", txn, 0644, "", "  ")
+		err = osutil.WriteFileJSON(opts.Output+".json", txn, 0644, "", "  ")
 		if err != nil {
 			log.Fatal(err)
 		}
