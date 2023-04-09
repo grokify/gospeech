@@ -36,15 +36,13 @@ func LongRunningRecognizeResponseToTranscript(res *speechpb.LongRunningRecognize
 			return txn, fmt.Errorf("E_NO_SPEAKER_TAG [%v]", word.SpeakerTag)
 		}
 		fmt.Printf(".%v.", word.SpeakerTag)
-		if curSpeakerTag == 0 {
-			curSpeakerTag = word.SpeakerTag
-		} else if curSpeakerTag != word.SpeakerTag {
-			newTurn := diarization.Turn{
+
+		if curSpeakerTag != 0 && curSpeakerTag != word.SpeakerTag {
+			txn.Turns = append(txn.Turns, diarization.Turn{
 				SpeakerName: curTurn.SpeakerName,
 				Text:        curTurn.Text,
 				TimeBegin:   curTurn.TimeBegin,
-				TimeEnd:     curTurn.TimeEnd}
-			txn.Turns = append(txn.Turns, newTurn)
+				TimeEnd:     curTurn.TimeEnd})
 			curTurn = diarization.Turn{}
 		}
 		curSpeakerTag = word.SpeakerTag
