@@ -13,7 +13,7 @@
 
   <div>
     {% code
-	  dinfo := timeutil.NewDurationInfo(turn.TimeBegin)
+	  dinfo := timeutil.NewDurationInfo(turn.TimeBegin,0,0)
 	%}
 	<p>{%s= timeutil.FormatDurationInfoMinSec(dinfo) %} - <b>{%s turn.SpeakerName %}</b></p>
 

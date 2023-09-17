@@ -5,7 +5,7 @@
 package diarization
 
 //line transcript2html.qtpl:1
-import "github.com/grokify/bootstrapper" 
+import "github.com/grokify/bootstrapper"
 
 //line transcript2html.qtpl:2
 import "github.com/grokify/mogo/time/timeutil"
@@ -56,7 +56,7 @@ func StreamTranscriptHtml(qw422016 *qt422016.Writer, txn *Transcript) {
   <div>
     `)
 //line transcript2html.qtpl:16
-		dinfo := timeutil.NewDurationInfo(turn.TimeBegin)
+		dinfo := timeutil.NewDurationInfo(turn.TimeBegin, 0, 0)
 
 //line transcript2html.qtpl:17
 		qw422016.N().S(`
