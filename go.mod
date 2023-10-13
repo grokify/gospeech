@@ -3,7 +3,7 @@ module github.com/grokify/gospeech
 go 1.19
 
 require (
-	cloud.google.com/go/speech v1.19.0
+	cloud.google.com/go/speech v1.19.1
 	github.com/grokify/bootstrapper v0.5.3
 	github.com/grokify/mogo v0.56.0
 	github.com/jessevdk/go-flags v1.5.0
@@ -31,12 +31,12 @@ require (
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fastjson v1.6.4 // indirect
 	go.opencensus.io v0.24.0 // indirect
-	golang.org/x/crypto v0.13.0 // indirect
+	golang.org/x/crypto v0.14.0 // indirect
 	golang.org/x/exp v0.0.0-20230905200255-921286631fa9 // indirect
-	golang.org/x/net v0.15.0 // indirect
+	golang.org/x/net v0.17.0 // indirect
 	golang.org/x/oauth2 v0.12.0 // indirect
 	golang.org/x/sync v0.3.0 // indirect
-	golang.org/x/sys v0.12.0 // indirect
+	golang.org/x/sys v0.13.0 // indirect
 	golang.org/x/text v0.13.0 // indirect
 	google.golang.org/api v0.141.0 // indirect
 	google.golang.org/appengine v1.6.8 // indirect
