@@ -5,7 +5,7 @@ go 1.21
 // toolchain go1.21.1
 
 require (
-	cloud.google.com/go/speech v1.20.1
+	cloud.google.com/go/speech v1.21.0
 	github.com/grokify/bootstrapper v0.5.3
 	github.com/grokify/mogo v0.60.1
 	github.com/jessevdk/go-flags v1.5.0
