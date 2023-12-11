@@ -7,7 +7,7 @@ go 1.21
 require (
 	cloud.google.com/go/speech v1.21.0
 	github.com/grokify/bootstrapper v0.5.3
-	github.com/grokify/mogo v0.62.2
+	github.com/grokify/mogo v0.62.3
 	github.com/jessevdk/go-flags v1.5.0
 	github.com/valyala/quicktemplate v1.7.0
 	google.golang.org/genproto v0.0.0-20231127180814-3a041ad873d4
