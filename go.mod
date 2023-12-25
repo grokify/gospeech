@@ -7,7 +7,7 @@ go 1.21
 require (
 	cloud.google.com/go/speech v1.21.0
 	github.com/grokify/bootstrapper v0.5.3
-	github.com/grokify/mogo v0.62.5
+	github.com/grokify/mogo v0.62.6
 	github.com/jessevdk/go-flags v1.5.0
 	github.com/valyala/quicktemplate v1.7.0
 	google.golang.org/genproto v0.0.0-20231212172506-995d672761c0
@@ -30,8 +30,8 @@ require (
 	github.com/microcosm-cc/bluemonday v1.0.26 // indirect
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	go.opencensus.io v0.24.0 // indirect
-	golang.org/x/crypto v0.16.0 // indirect
-	golang.org/x/exp v0.0.0-20231214170342-aacd6d4b4611 // indirect
+	golang.org/x/crypto v0.17.0 // indirect
+	golang.org/x/exp v0.0.0-20231219180239-dc181d75b848 // indirect
 	golang.org/x/net v0.19.0 // indirect
 	golang.org/x/oauth2 v0.15.0 // indirect
 	golang.org/x/sync v0.5.0 // indirect
