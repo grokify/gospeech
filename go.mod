@@ -11,7 +11,7 @@ require (
 	github.com/jessevdk/go-flags v1.5.0
 	github.com/valyala/quicktemplate v1.7.0
 	google.golang.org/genproto v0.0.0-20240213162025-012b6fc9bca9
-	google.golang.org/protobuf v1.33.0
+	google.golang.org/protobuf v1.34.0
 )
 
 require (
