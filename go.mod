@@ -1,17 +1,16 @@
 module github.com/grokify/gospeech
 
 go 1.22
-
 toolchain go1.22.2
 
 require (
 	cloud.google.com/go/speech v1.23.1
 	github.com/grokify/bootstrapper v0.5.4
-	github.com/grokify/mogo v0.63.10
+	github.com/grokify/mogo v0.64.0
 	github.com/jessevdk/go-flags v1.5.0
 	github.com/valyala/quicktemplate v1.7.0
-	google.golang.org/genproto v0.0.0-20240429193739-8cf5692501f6
-	google.golang.org/protobuf v1.34.0
+	google.golang.org/genproto v0.0.0-20240509183442-62759503f434
+	google.golang.org/protobuf v1.34.1
 )
 
 require (
@@ -39,9 +38,9 @@ require (
 	go.opentelemetry.io/otel v1.26.0 // indirect
 	go.opentelemetry.io/otel/metric v1.26.0 // indirect
 	go.opentelemetry.io/otel/trace v1.26.0 // indirect
-	golang.org/x/crypto v0.22.0 // indirect
-	golang.org/x/exp v0.0.0-20240416160154-fe59bbe5cc7f // indirect
-	golang.org/x/net v0.24.0 // indirect
+	golang.org/x/crypto v0.23.0 // indirect
+	golang.org/x/exp v0.0.0-20240506185415-9bf2ced13842 // indirect
+	golang.org/x/net v0.25.0 // indirect
 	golang.org/x/oauth2 v0.20.0 // indirect
 	golang.org/x/sync v0.7.0 // indirect
 	golang.org/x/sys v0.20.0 // indirect
