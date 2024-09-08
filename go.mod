@@ -7,7 +7,7 @@ toolchain go1.22.5
 require (
 	cloud.google.com/go/speech v1.25.0
 	github.com/grokify/bootstrapper v0.5.5
-	github.com/grokify/mogo v0.64.9
+	github.com/grokify/mogo v0.64.10
 	github.com/jessevdk/go-flags v1.6.1
 	github.com/valyala/quicktemplate v1.8.0
 	google.golang.org/genproto v0.0.0-20240827150818-7e3bb234dfed
